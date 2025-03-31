@@ -14,7 +14,7 @@ import br.com.estudos.transactional.to.TransferenciaTo;
 import static java.math.BigDecimal.ZERO;
 
 @Service
-public class TransacaoService {
+public class TransacaoBancariaService {
 
     @Autowired
     private ContaDao contaDao;

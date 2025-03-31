@@ -20,7 +20,7 @@ public class BancoService {
     private ContaDao contaDao;
 
     @Autowired
-    private TransacaoService transacaoService;
+    private TransacaoBancariaService transacaoBancariaService;
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public String transferir(final TransferenciaTo transferenciaTo) throws Exception {
@@ -54,7 +54,7 @@ public class BancoService {
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public String transferirRequiresNewEmDuasClasses(final TransferenciaTo transferenciaTo) throws Exception {
-        final BigDecimal saldoOrigemAposTransferencia = transacaoService.removerValorEmOutraProxy(transferenciaTo);
+        final BigDecimal saldoOrigemAposTransferencia = transacaoBancariaService.removerValorEmOutraProxy(transferenciaTo);
         final BigDecimal saldoDestinoAposTransferencia = adicionarValor(transferenciaTo);
 
         return "Saldo conta origem " + saldoOrigemAposTransferencia + " e saldo conta destino " + saldoDestinoAposTransferencia;
